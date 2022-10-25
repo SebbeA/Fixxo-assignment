@@ -13,6 +13,8 @@ const ContactFormSection = () => {
 
         if(!values.name)
             errors.name = "You must enter a name"
+        else if(values.name.length < 2)
+            errors.name = "Your name must at least have 2 characters"
 
         if(!values.email)
             errors.email = "You must enter an email"
@@ -47,7 +49,7 @@ const ContactFormSection = () => {
             <div className="container">
                 {
                     submitted ? 
-                    (<div className="d-flex justify-content-center align-items-center">
+                    (<div className="comment">
                         <div>Thank you for your comment!</div>
                     </div>)
                     :

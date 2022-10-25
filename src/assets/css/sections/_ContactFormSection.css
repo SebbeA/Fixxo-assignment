@@ -6,6 +6,15 @@
     .contact-form .container {
         max-width: 1110px;
     }
+    .contact-form .container .comment {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(53, 173, 53);
+        font-size: 20px;
+        font-weight: 700;
+        padding-bottom: 50px;
+    }
 
     .contact-form h2 {
         font-size: 18px;
