@@ -6,6 +6,7 @@
 @import "../src/assets/css/cores/_Base.css";
 @import "../src/assets/css/cores/_GridCardIcon.css";
 @import "../src/assets/css/cores/_Buttons.css";
+@import "../src/assets/css/cores/_Colors.css";
 
 /* Sections */
 @import "../src/assets/css/sections/_MainMenuSection.css";
