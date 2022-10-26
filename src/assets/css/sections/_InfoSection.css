@@ -1,5 +1,6 @@
 .info {
- margin-bottom: 40px;
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
     .info .container {
         max-width: 1110px;
@@ -13,7 +14,11 @@
         }
             .info .info-icons .info-icon {
                 text-align: center;
+                transition: 0.3s ease-in-out;
             }
+                .info .info-icons .info-icon:hover {
+                    color: var(--color-theme);
+                }
                 .info .info-icons .info-icon img {
                     height: 75px;
                     width: 75px;
