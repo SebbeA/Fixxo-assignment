@@ -5,6 +5,7 @@ import ShowcaseSection from '../sections/ShowcaseSection'
 import CollabSection from '../sections/CollabSection'
 import TopPickSection from '../sections/TopPickSection'
 import FlashSaleSection from '../sections/FlashSaleSection'
+import InfoSection from '../sections/InfoSection'
 import FooterSection from '../sections/FooterSection'
 
 
@@ -46,6 +47,7 @@ const HomeView = () => {
       <CollabSection />
       <TopPickSection title="Top Products" products={topproducts} />
       <FlashSaleSection title="Flash Sale" products={flashsaleproducts}/>
+      <InfoSection />
       <FooterSection />
     </>
   )
