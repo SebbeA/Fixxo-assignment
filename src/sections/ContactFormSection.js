@@ -1,47 +1,61 @@
 import React, { useState } from 'react'
-import { validate } from '../scripts/validation'
+import { submitData, validate } from '../scripts/validation'
 
 const ContactFormSection = () => {
-  let currentPage = "Contact Us"
-  window.top.document.title = `${currentPage} || Fixxo` 
+    let currentPage = "Contact Us"
+    window.top.document.title = `${currentPage} || Fixxo` 
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [comments, setComments] = useState('')
-  const [errors, setErrors] = useState({})
-  const [submitted, setSubmitted] = useState(false)
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [comments, setComments] = useState('')
+    const [errors, setErrors] = useState({})
+    const [submitted, setSubmitted] = useState(false)
+    const [failedSubmit, setFailedSubmit] = useState(false)
 
-  const handleChange = (e) => {
-    const {id, value} = e.target
+    const handleChange = (e) => {
+        const {id, value} = e.target
 
-    switch(id) {
-      case 'name':
-        setName(value)
-        break
-      case 'email':
-        setEmail(value)
-        break
-      case 'comments':
-        setComments(value)
-        break
-    }
+        switch(id) {
+            case 'name':
+                setName(value)
+                break
+            case 'email':
+                setEmail(value)
+                break
+            case 'comments':
+                setComments(value)
+            break
+        }
 
-    setErrors({...errors, [id]: validate(e)})
+        setErrors({...errors, [id]: validate(e)})
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setErrors(validate(e, {name, email, comments}))
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setFailedSubmit(false)
+        setSubmitted(false)
+        setErrors(validate(e, {name, email, comments}))
   
-    if (errors.name === null && errors.email === null && errors.comments === null) {
-      setSubmitted(true)
-      setName('')
-      setEmail('')
-      setComments('')
-      setErrors({})
-    } else {
-      setSubmitted(false)
-    }
+        if (errors.name === null && errors.email === null && errors.comments === null) {
+        
+        let json = JSON.stringify({ name, email, comments})
+        
+        setName('')
+        setEmail('')
+        setComments('')
+        setErrors({})
+    
+        if(await submitData('https://win22-webapi.azurewebsites.net/api/contactform', 'POST', json, )) {
+            setSubmitted(true)
+            setFailedSubmit(false)
+        } else {
+            setSubmitted(false)
+            setFailedSubmit(true)
+        }
+   
+        } else {
+            setSubmitted(false)
+        }
   }
 
     return (
@@ -53,6 +67,14 @@ const ContactFormSection = () => {
                 <div className="alert alert-success text-center mb-5" role="alert">
                 <h3>Thank you for your comments</h3> 
                 <p>We will contact you as soon as possible.</p>
+                </div>  ) : (<></>)
+                }
+
+                {
+                failedSubmit ? (
+                <div className="alert alert-danger text-center mb-5" role="alert">
+                <h3>Something went wrong!</h3> 
+                <p>We couldn't submit your comments right now, try again later.</p>
                 </div>  ) : (<></>)
                 }
                 
