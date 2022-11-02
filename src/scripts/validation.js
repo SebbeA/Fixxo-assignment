@@ -1,5 +1,5 @@
 export const submitData = async (url, method, data, contentType = 'application/json') => {
-    
+    // * validate thru api
     const res = await fetch(url, {
         method: method,
         headers: {
@@ -14,7 +14,7 @@ export const submitData = async (url, method, data, contentType = 'application/j
 
     return false
 }
-
+// * Validate submit button
 export const validate = (e, form = null) => {
     if (e.type === 'submit') {
      const errors = {}
@@ -35,7 +35,7 @@ export const validate = (e, form = null) => {
          }
     }
  }
- 
+//  * Validate the name
  const validate_name = (value) => {
      if (!value)
          return 'A name is required'
@@ -44,7 +44,7 @@ export const validate = (e, form = null) => {
      else
          return null
  }
- 
+//  * Validate the email thru regex
  const validate_email = (value) => {
      const regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
      
@@ -55,7 +55,7 @@ export const validate = (e, form = null) => {
      else
          return null
  }
- 
+//  * Validate comments
  const validate_comments = (value) => {
      if (!value)
          return 'A comment is required'
