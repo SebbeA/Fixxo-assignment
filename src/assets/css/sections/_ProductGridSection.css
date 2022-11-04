@@ -27,6 +27,7 @@
             position: relative;
             transition: 0.3s ease-in-out;   
             overflow: hidden; 
+            /* object-fit: cover; */
         }
         .card .card-img .card-menu {
             position: absolute;

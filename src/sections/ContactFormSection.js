@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { submitData, validate } from '../scripts/validation'
+import { submitData, validate } from '../assets/scripts/validation'
 
 const ContactFormSection = () => {
     let currentPage = "Contact Us"

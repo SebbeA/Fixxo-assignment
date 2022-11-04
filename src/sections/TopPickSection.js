@@ -12,7 +12,7 @@ const TopPickSection = ({title, products}) => {
               <button className="button-theme-white">FLASH SALE</button>
             </div>
           </div>
-          <div className="row row-cols-1 row-cols-md-2 g-2">
+          <div className="row row-cols-1 row-cols-md-2">
               {
                 products.map(product => <ProductCard key={product.id} product={product} />)
               }

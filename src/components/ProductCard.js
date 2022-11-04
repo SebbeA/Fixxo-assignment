@@ -19,6 +19,7 @@ const ProductCard = ({product}) => {
     <div className="col">
         <div className="card">
             <div className="card-img">
+                {/* <img src={product.img} alt={product.name} /> */}
                 <div className="card-menu">
                     <button onClick={addToWishList} className="card-icon"><i className="fa-regular fa-heart"></i></button>
                     <button onClick={addToCompare} className="card-icon"><i className="fa-regular fa-code-compare"></i></button>
