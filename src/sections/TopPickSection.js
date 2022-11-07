@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductCard from '../components/ProductCard'
 
-const TopPickSection = ({title, products}) => {
+const TopPickSection = ({title, products = []}) => {
   return (
     <section className="top-grid">
         <div className="container">
@@ -14,7 +14,7 @@ const TopPickSection = ({title, products}) => {
           </div>
           <div className="row row-cols-1 row-cols-md-2">
               {
-                products.map(product => <ProductCard key={product.id} product={product} />)
+                products.map(product => <ProductCard key={product.articleNumber} product={product} />)
               }
           </div>
         </div>

@@ -1,14 +1,14 @@
 import React from 'react'
 import ProductCard from '../components/ProductCard';
 
-const FlashSaleSection = ({title, products}) => {
+const FlashSaleSection = ({title, products = []}) => {
   return (
     <section className="flash-grid">
         <div className="container">
           {/* <h1>{title}</h1> */}
           <div className="row row-cols-1 row-cols-md-2 g-2">
               {
-                products.map(product => <ProductCard key={product.id} product={product} />)
+                products.map(product => <ProductCard key={product.articleNumber} product={product} />)
               }
           </div>
           <div className="flashsale">

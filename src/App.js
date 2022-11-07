@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -12,49 +12,54 @@ import CompareView from './views/CompareView';
 import WishListView from './views/WishListView';
 import ShoppingCartView from './views/ShoppingCartView';
 import NotFoundView from './views/NotFoundView';
+import { ProductsContext, FeaturedProductsContext, SquareProductsContext } from './contexts/contexts'
 
 function App() {
+  const [products, setProducts] = useState([])
+  const [featured, setFeatured] = useState([])
+  const [square, setSquare] = useState([])
 
-  const [products, setProducts] = useState([
-    { id: 1, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5, img: "https://images.pexels.com/photos/4397824/pexels-photo-4397824.jpeg?auto=compress&cs=tinysrgb&w=1600"},
-    { id: 2, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5, img: "https://images.pexels.com/photos/4397810/pexels-photo-4397810.jpeg?auto=compress&cs=tinysrgb&w=1600"},
-    { id: 3, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5, img: "https://images.pexels.com/photos/4490019/pexels-photo-4490019.jpeg?auto=compress&cs=tinysrgb&w=1600"},
-    { id: 4, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5, img: "https://images.pexels.com/photos/4389662/pexels-photo-4389662.jpeg?auto=compress&cs=tinysrgb&w=1600"},
-    // { id: 5, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5, img: "https://images.pexels.com/photos/4389667/pexels-photo-4389667.jpeg?auto=compress&cs=tinysrgb&w=1600"},
-    // { id: 6, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5, img: "https://images.pexels.com/photos/4389666/pexels-photo-4389666.jpeg?auto=compress&cs=tinysrgb&w=1600"},
-    // { id: 7, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5, img: "https://images.pexels.com/photos/691567/pexels-photo-691567.jpeg?auto=compress&cs=tinysrgb&w=1600"},
-    // { id: 8, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5, img: "https://images.pexels.com/photos/4109084/pexels-photo-4109084.jpeg?auto=compress&cs=tinysrgb&w=1600"}
-  ])
+  useEffect(() => {
+    const fetchAllData = async () => {
+      const result = await fetch('https://win22-webapi.azurewebsites.net/api/products')
+      setProducts(await result.json())
+    }
+    fetchAllData()
 
-  // const [topProducts, setTopProducts] = useState([
-  //   { id: 1, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5},
-  //   { id: 2, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5},
-  //   { id: 3, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5},
-  //   { id: 4, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5}
-  // ])
+    const fetchFeaturedData = async () => {
+      const result = await fetch('https://win22-webapi.azurewebsites.net/api/products?take=8')
+      setFeatured(await result.json())
+    }
+    fetchFeaturedData()
 
-  // const [flashSaleProducts, setFlashSaleProducts] = useState([
-  //   { id: 1, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5},
-  //   { id: 2, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5},
-  //   { id: 3, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5},
-  //   { id: 4, name: "Modern Black Blouse", category: "Fashion", price: "$35.00", rating: 5}
-  // ])
+    const fetchSquareData = async () => {
+      const result = await fetch('https://win22-webapi.azurewebsites.net/api/products?take=4')
+      setSquare(await result.json())
+    }
+    fetchSquareData()    
+
+  }, [setProducts, setFeatured, setSquare])  
 
   return (
     <BrowserRouter>
+      <ProductsContext.Provider value={products}>
+      <FeaturedProductsContext.Provider value={featured}>
+      <SquareProductsContext.Provider value={square}>
       <Routes>
-        <Route path="/" element={<HomeView products={products} />} />
+        <Route path="/" element={<HomeView />} />
         <Route path="/categories" element={<CategoriesView /> } />
-        <Route path="/products" element={<ProductsView products={products} />} />
-        <Route path="/products/:name" element={<ProductDetailsView />} />  
+        <Route path="/products" element={<ProductsView />} />
+        <Route path="/products/:id" element={<ProductDetailsView />} />  
         <Route path="/contacts" element={<ContactsView />} />
         <Route path="/search" element={<SearchView />} />
         <Route path="/compare" element={<CompareView />} />
         <Route path="/wishlist" element={<WishListView />} />
         <Route path="/shoppingcart" element={<ShoppingCartView />} />
-
         <Route path="*" element={<NotFoundView />} />
       </Routes>
+      </SquareProductsContext.Provider>
+      </FeaturedProductsContext.Provider>
+      </ProductsContext.Provider>
     </BrowserRouter>
   );
 }
