@@ -30,26 +30,25 @@
             overflow: hidden;
             object-fit: cover !important;
         }
-            .card .card-img img {
-                object-fit: cover !important;
+        /** Cant get object-fit to work doe to my button  */
+            .card .card-img img { 
+                object-fit: cover; 
             }
-
-        .card .card-img .card-menu {
-            position: absolute;
-            right: -40px;
-            top: 0.6rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            transition: 0.3s ease-in-out;
-            object-fit: cover !important;
-        }
-            .card .card-img .card-menu .card-icon:hover {
-                color: var(--color-white);
-                background-color: var(--color-dark);
-                text-decoration: none;
-                transform: rotatey(180deg);
+            .card .card-img .card-menu {
+                position: absolute;
+                right: -40px;
+                top: 0.6rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+                transition: 0.3s ease-in-out;
             }
+                .card .card-img .card-menu .card-icon:hover {
+                    color: var(--color-white);
+                    background-color: var(--color-dark);
+                    text-decoration: none;
+                    transform: rotatey(180deg);
+                }
         .card .card-img .button-theme {
             position: absolute;
             bottom: 0;
