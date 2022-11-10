@@ -1,6 +1,9 @@
 import React from 'react'
+// * Importing 2 pictures
 import images1 from '../assets/images/placeholder-pamela.svg'
 import images2 from '../assets/images/placeholder-letsbe.svg'
+
+// * Structure for collab section
 
 const CollabSection = () => {
   return (

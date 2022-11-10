@@ -1,14 +1,17 @@
+// * importing useState so we can track and state variables in a function
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+// * importing MenuIncon as a component
 import MenuIcon from '../components/MenuIcon'
 
+// * tried to make it responsive with a useState
 const MainMenuSection = () => {
   const [showMenu, setShowMenu] = useState(false)
 
   const toggleMenu = () => {
     setShowMenu(!showMenu)
   }
-
+// * Structure added for main menu
   return (
     <nav className="mainmenu container">
         <NavLink className="logotype" to="/" end>Fixxo.</NavLink>

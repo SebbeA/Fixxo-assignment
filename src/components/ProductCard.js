@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+// * Added prop (product)
 const ProductCard = ({product}) => {
-
+    // * Beginning of a function to add products for wishlist, compare and cart. Copy from Hans
     const addToWishList = (e) => {
         console.log("added to wish list")
     }
@@ -15,6 +15,7 @@ const ProductCard = ({product}) => {
         console.log("added to cart")
     }
 
+    // * Structure for all product cards
   return (
     <div className="col">
         <div className="card">

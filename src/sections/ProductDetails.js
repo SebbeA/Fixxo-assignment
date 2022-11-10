@@ -1,5 +1,5 @@
 import React from 'react'
-
+// * Copy from Hans
 const ProductDetails = ({product}) => {
   return (
     <div>

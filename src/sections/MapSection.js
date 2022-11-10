@@ -1,5 +1,6 @@
 import React from 'react'
-
+// * Copy structure from Hans
+// * iFrame used from google
 const MapSection = () => {
   return (
     <iframe 

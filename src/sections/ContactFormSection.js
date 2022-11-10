@@ -1,17 +1,19 @@
+// * Code copy from Hans
+// * importing useState so we can track and state variables in a function
 import React, { useState } from 'react'
 import { submitData, validate } from '../assets/scripts/validation'
 
 const ContactFormSection = () => {
     let currentPage = "Contact Us"
     window.top.document.title = `${currentPage} || Fixxo` 
-
+    // * sets and defines useState
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [comments, setComments] = useState('')
     const [errors, setErrors] = useState({})
     const [submitted, setSubmitted] = useState(false)
     const [failedSubmit, setFailedSubmit] = useState(false)
-
+    // * validate handleChange with a "live" update when pressing keys
     const handleChange = (e) => {
         const {id, value} = e.target
 
@@ -29,7 +31,7 @@ const ContactFormSection = () => {
 
         setErrors({...errors, [id]: validate(e)})
   }
-
+//  * validation for handleSubmit. False until all criterias are forfilled 
     const handleSubmit = async (e) => {
         e.preventDefault()
         setFailedSubmit(false)
@@ -44,10 +46,11 @@ const ContactFormSection = () => {
         setEmail('')
         setComments('')
         setErrors({})
-    
+        // * if all is true API will post
         if(await submitData('https://win22-webapi.azurewebsites.net/api/contactform', 'POST', json, )) {
             setSubmitted(true)
             setFailedSubmit(false)
+            // * else error message will print
         } else {
             setSubmitted(false)
             setFailedSubmit(true)
@@ -61,7 +64,7 @@ const ContactFormSection = () => {
     return (
         <section className="contact-form">
             <div className="container">
-
+                {/* If all is true this will print */}
                 {
                 submitted ? (
                 <div className="alert alert-success text-center mb-5" role="alert">
@@ -69,7 +72,7 @@ const ContactFormSection = () => {
                 <p>We will contact you as soon as possible.</p>
                 </div>  ) : (<></>)
                 }
-
+                {/* If one or all is false this will print, but this dosn't work */}
                 {
                 failedSubmit ? (
                 <div className="alert alert-danger text-center mb-5" role="alert">
@@ -78,6 +81,7 @@ const ContactFormSection = () => {
                 </div>  ) : (<></>)
                 }
                 
+                {/* Structure for the contact-form */}
                 <h2>Come in Contact with Us</h2>
                 <form onSubmit={handleSubmit} noValidate>
                     <div>

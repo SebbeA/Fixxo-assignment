@@ -1,6 +1,8 @@
 import React from 'react'
+// * importing mainmenu section
 import MainMenuSection from '../sections/MainMenuSection'
 
+// * structure for 404 page, copy from Hans
 const NotFoundView = () => {
   return (
     <>

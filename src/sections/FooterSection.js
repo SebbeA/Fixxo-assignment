@@ -1,6 +1,8 @@
 import React from 'react'
+// * importing ExternalLinks as a component
 import ExternalLinks from '../components/ExternalLinks'
 
+// * Structure for footer
 const FooterSection = () => {
   return (
     <footer>

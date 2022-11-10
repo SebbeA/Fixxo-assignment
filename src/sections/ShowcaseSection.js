@@ -1,7 +1,10 @@
 import React from 'react'
+
+// * importing 2 pictures
 import images1 from '../assets/images/header-women.svg';
 import images2 from '../assets/images/header-man.svg';
 
+// * added structure for showcase section
 const ShowcaseSection = () => {
   return (
     <section className="showcase container">

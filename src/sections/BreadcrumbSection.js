@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+// * Structure for Breadcrumb
+
+// * Added a prop (currentPage) so we know witch page we are on
 const BreadcrumbSection = ({currentPage}) => {
   return (
     <section className="breadcrumb">

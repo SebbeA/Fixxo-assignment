@@ -1,9 +1,11 @@
 import React from 'react'
+// * importing 3 pictures
 import images3 from '../assets/images/support-icon.svg'
 import images4 from '../assets/images/payment-icon.svg'
 import images5 from '../assets/images/truck-icon.svg'
 import { NavLink } from 'react-router-dom'
 
+// * Structure for info section
 const InfoSection = () => {
   return (
     <section className="info">

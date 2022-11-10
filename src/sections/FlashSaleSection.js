@@ -1,12 +1,13 @@
 import React from 'react'
+// * importing productcard component
 import ProductCard from '../components/ProductCard';
-
-const FlashSaleSection = ({title, products = []}) => {
+// * Added prop (products from app.js)
+const FlashSaleSection = ({products = []}) => {
   return (
     <section className="flash-grid">
         <div className="container">
-          {/* <h1>{title}</h1> */}
           <div className="row row-cols-1 row-cols-md-2 g-2">
+            {/* importing ProductCard component here */}
               {
                 products.map(product => <ProductCard key={product.articleNumber} product={product} />)
               }
